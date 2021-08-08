@@ -19,7 +19,7 @@ export class UpdatePage implements OnInit {
     public formBuilder: FormBuilder
   ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.employeeService.getTask(this.id).subscribe((data) => {
+    this.employeeService.getUser(this.id).subscribe((data) => {
       this.editForm = this.formBuilder.group({
         email: [data['email']],
         password: [data['password']]

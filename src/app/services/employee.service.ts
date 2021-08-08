@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
@@ -15,18 +16,29 @@ export class USER {
 export class EmployeeService {
 
   constructor(
+    private angularFireAuth: AngularFireAuth,
     private ngFirestore: AngularFirestore,
     private router: Router
   ) { }
+
+  createUser(user: USER) {
+    return new Promise<any>((resolve, reject) => {
+      this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password)
+        .then(
+          res => resolve(res),
+          err => reject(err));
+    });
+  }
+
   create(user: USER) {
     return this.ngFirestore.collection('employees').add(user);
   }
 
-  getTasks() {
+  getUsers() {
     return this.ngFirestore.collection('employees').snapshotChanges();
   }
 
-  getTask(id) {
+  getUser(id) {
     return this.ngFirestore.collection('employees').doc(id).valueChanges();
   }
 

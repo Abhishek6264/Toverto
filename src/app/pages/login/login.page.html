@@ -8,14 +8,14 @@
   </ion-img>
   <ion-grid>
     <ion-row>
-      <ion-col style="color: black;">
+      <ion-col style="color: black;" >
         <h1 style="color: black; margin-left: 25%;margin-top: -10px;">A BETTER WAY</h1>
         <h1 style="color: black; margin-left: 35%;margin-top: -10px;">TO DINE</h1>
         <h6 style="margin-left: 28%;">Dine. Eearn. Redeam</h6>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit(employeeForm.value)">
   <div class="user_input">
     <ion-item lines="none">
       <ion-input formControlName="email" type="email" placeholder="Email Address" required></ion-input>

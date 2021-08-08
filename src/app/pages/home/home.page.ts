@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-    this.employeeService.getTasks().subscribe((res) => {
+    this.employeeService.getUsers().subscribe((res) => {
       this.EmployeeList = res.map((t) => ({
           id: t.payload.doc.id,
           ...t.payload.doc.data() as  USER
@@ -30,8 +30,8 @@ export class HomePage implements OnInit {
     });
   }
 
-  todoList() {
-    this.employeeService.getTasks()
+  userList() {
+    this.employeeService.getUsers()
     .subscribe((data) => {
       console.log(data);
     });
@@ -41,5 +41,6 @@ export class HomePage implements OnInit {
     console.log(id);
       this.employeeService.delete(id);
   }
+
 
 }
